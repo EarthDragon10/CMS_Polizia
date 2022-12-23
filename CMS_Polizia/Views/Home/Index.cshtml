@@ -1,0 +1,75 @@
+﻿@model IEnumerable<CMS_Polizia.Models.Anagrafica>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <a class="btn btn-primary" role="button" data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                Verbali Trascritti Per Trasgressore
+            </a>
+
+            <div class="collapse" id="collapseExample">
+                <div class="well">
+                    @{
+                        Html.RenderAction("VerbaliPerTrasgressore");
+                    }
+                </div>
+            </div>
+
+        </div>
+        <div class="col-md-6">
+            <a class="btn btn-primary" role="button" data-toggle="collapse" href="#collapseExample2" aria-expanded="false" aria-controls="collapseExample2">
+                Punti Decurtati per Trasgressore
+            </a>
+
+            <div class="collapse" id="collapseExample2">
+                <div class="well">
+                    @{
+                        Html.RenderAction("PuntiDecurtatiPerTrasgressore");
+                    }
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <a class="btn btn-primary" role="button" data-toggle="collapse" href="#collapseExample3" aria-expanded="false" aria-controls="collapseExample3">
+                Violazioni Sopra i 10 Punti
+            </a>
+
+            <div class="collapse" id="collapseExample">
+                <div class="well">
+                    @{
+                        Html.RenderAction("ViolazioniOver10pnt");
+                    }
+                </div>
+            </div>
+
+        </div>
+        <div class="col-md-6">
+            <a class="btn btn-primary" role="button" data-toggle="collapse" href="#collapseExample2" aria-expanded="false" aria-controls="collapseExample2">
+                Punti Decurtati per Trasgressore
+            </a>
+
+            <div class="collapse" id="collapseExample2">
+                <div class="well">
+                    @{
+                        
+                    }
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
