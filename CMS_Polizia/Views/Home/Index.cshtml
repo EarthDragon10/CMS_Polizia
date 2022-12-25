@@ -48,24 +48,24 @@
                 Violazioni Sopra i 10 Punti
             </a>
 
-            <div class="collapse" id="collapseExample">
+            <div class="collapse" id="collapseExample3">
                 <div class="well">
                     @{
-                        Html.RenderAction("ViolazioniOver10pnt");
+                        Html.RenderAction("ViolazioniOverTenPnt");
                     }
                 </div>
             </div>
 
         </div>
         <div class="col-md-6">
-            <a class="btn btn-primary" role="button" data-toggle="collapse" href="#collapseExample2" aria-expanded="false" aria-controls="collapseExample2">
+            <a class="btn btn-primary" role="button" data-toggle="collapse" href="#collapseExample4" aria-expanded="false" aria-controls="collapseExample4">
                 Punti Decurtati per Trasgressore
             </a>
 
-            <div class="collapse" id="collapseExample2">
+            <div class="collapse" id="collapseExample4">
                 <div class="well">
                     @{
-                        
+                        Html.RenderAction("ViolazioniOver400Mny");
                     }
                 </div>
             </div>

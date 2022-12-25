@@ -166,7 +166,8 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\VerbaliPerTrasgressore.cshtml" />
     <Content Include="Views\Home\PuntiDecurtatiPerTrasgressore.cshtml" />
-    <Content Include="Views\Home\ViolazioniOver10pnt.cshtml" />
+    <Content Include="Views\Home\ViolazioniOverTenPnt.cshtml" />
+    <Content Include="Views\Home\ViolazioniOver400money.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

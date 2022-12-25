@@ -114,7 +114,7 @@ namespace CMS_Polizia.Models
                     Anagrafica trasgressore = new Anagrafica();
                     trasgressore.Cognome = reader["Cognome"].ToString();
                     trasgressore.Nome = reader["Nome"].ToString();
-                    trasgressore.PuntiDecurtati = Convert.ToDouble(reader["DecurtamentoPunti"]);
+                    trasgressore.PuntiDecurtati = Convert.ToDouble(reader["PuntiDecurtati"]);
                     ListaTrasgressori.Add(trasgressore);
                 }
             }
@@ -124,6 +124,7 @@ namespace CMS_Polizia.Models
         }
 
         public static List<Anagrafica> ViolazioniOver10()
+
         {
             SqlConnection connetcionDB = new SqlConnection();
             connetcionDB.ConnectionString = ConfigurationManager.ConnectionStrings["DB_Polizia"].ToString();
@@ -147,7 +148,40 @@ namespace CMS_Polizia.Models
                     trasgressore.Indirizzo = reader["Indirizzo"].ToString();
                     trasgressore.DataViolazione = Convert.ToDateTime(reader["DataViolazione"]);
                     trasgressore.PuntiDecurtati = Convert.ToDouble(reader["DecurtamentoPunti"]);
-                    ListaTrasgressori.Add(trasgressore);
+                    Anagrafica.ListaTrasgressori.Add(trasgressore);
+                }
+            }
+
+            connetcionDB.Close();
+            return Anagrafica.ListaTrasgressori;
+        }
+
+        public static List<Anagrafica> GetViolazioniOver400Mny()
+        {
+            SqlConnection connetcionDB = new SqlConnection();
+            connetcionDB.ConnectionString = ConfigurationManager.ConnectionStrings["DB_Polizia"].ToString();
+            connetcionDB.Open();
+
+            SqlCommand command = new SqlCommand();
+            command.CommandText = "select Cognome, Nome, Indirizzo, Dataviolazione, Importo, DecurtamentoPunti from ANAGRAFICA as A inner join VERBALE as V on A.idanagrafica = V.idanagrafica where Importo > 400";
+            command.Connection = connetcionDB;
+
+            SqlDataReader reader = command.ExecuteReader();
+
+            ListaTrasgressori.Clear();
+
+            if (reader.HasRows)
+            {
+                while (reader.Read())
+                {
+                    Anagrafica trasgressore = new Anagrafica();
+                    trasgressore.Cognome = reader["Cognome"].ToString();
+                    trasgressore.Nome = reader["Nome"].ToString();
+                    trasgressore.Indirizzo = reader["Indirizzo"].ToString();
+                    trasgressore.DataViolazione = Convert.ToDateTime(reader["DataViolazione"]);
+                    trasgressore.Importo = Convert.ToDecimal(reader["Importo"]);
+                    trasgressore.PuntiDecurtati = Convert.ToDouble(reader["DecurtamentoPunti"]);
+                    Anagrafica.ListaTrasgressori.Add(trasgressore);
                 }
             }
 

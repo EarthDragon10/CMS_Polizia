@@ -26,7 +26,7 @@ namespace CMS_Polizia.Controllers
             return PartialView(ListaPuntiToltiPerTrasgressore);
         }
         
-        public ActionResult ViolazioniOver10pnt()
+        public ActionResult ViolazioniOverTenPnt()
         {
             List<Anagrafica> ListaViolazioniOver10pnt = Anagrafica.ViolazioniOver10();
             return PartialView(ListaViolazioniOver10pnt);
@@ -34,7 +34,8 @@ namespace CMS_Polizia.Controllers
 
         public ActionResult ViolazioniOver400money()
         {
-            return PartialView();
+            List<Anagrafica> ListaViolazioniOver400Mny = Anagrafica.GetViolazioniOver400Mny();
+            return PartialView(ListaViolazioniOver400Mny);
         }
     }
 }
