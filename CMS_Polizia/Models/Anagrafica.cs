@@ -114,7 +114,7 @@ namespace CMS_Polizia.Models
                     Anagrafica trasgressore = new Anagrafica();
                     trasgressore.Cognome = reader["Cognome"].ToString();
                     trasgressore.Nome = reader["Nome"].ToString();
-                    trasgressore.PuntiDecurtati = Convert.ToDouble(reader["PuntiDecurtati"]);
+                    trasgressore.PuntiDecurtati = Convert.ToDouble(reader["DecurtamentoPunti"]);
                     ListaTrasgressori.Add(trasgressore);
                 }
             }
@@ -146,7 +146,7 @@ namespace CMS_Polizia.Models
                     trasgressore.Nome = reader["Nome"].ToString();
                     trasgressore.Indirizzo = reader["Indirizzo"].ToString();
                     trasgressore.DataViolazione = Convert.ToDateTime(reader["DataViolazione"]);
-                    trasgressore.PuntiDecurtati = Convert.ToDouble(reader["PuntiDecurtati"]);
+                    trasgressore.PuntiDecurtati = Convert.ToDouble(reader["DecurtamentoPunti"]);
                     ListaTrasgressori.Add(trasgressore);
                 }
             }
