@@ -6,6 +6,7 @@ using System.Configuration;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 
 namespace CMS_Polizia.Models
 {
@@ -23,6 +24,7 @@ namespace CMS_Polizia.Models
         public decimal TotaleMulte { get; set; }
         public double NumVerbali { get; set; }
         public double PuntiDecurtati { get; set; }
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
         public DateTime DataViolazione { get; set; }
         public decimal Importo { get; set; }
 
@@ -187,6 +189,46 @@ namespace CMS_Polizia.Models
 
             connetcionDB.Close();
             return Anagrafica.ListaTrasgressori;
+        }
+
+        public static List<SelectListItem> AnagragicaDropDownList()
+        {
+            List<SelectListItem> selectList = new List<SelectListItem>();
+
+            SqlConnection connetcionDB = new SqlConnection();
+            try
+            {
+                connetcionDB.ConnectionString = ConfigurationManager.ConnectionStrings["DB_Polizia"].ToString();
+                connetcionDB.Open();
+
+                SqlCommand command = new SqlCommand();
+               
+
+                command.CommandText = "SELECT * FROM ANAGRAFICA";
+                command.Connection = connetcionDB;
+                SqlDataReader reader = command.ExecuteReader();
+
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        SelectListItem selectedItem = new SelectListItem
+                        {
+                            Value = reader["IdAnagrafica"].ToString(),
+                            Text = reader["Cognome"].ToString() + " " + reader["Nome"].ToString(),
+                        };
+
+                        selectList.Add(selectedItem);
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                connetcionDB.Close();
+            }
+
+            connetcionDB.Close();
+            return selectList;
         }
     }
 }

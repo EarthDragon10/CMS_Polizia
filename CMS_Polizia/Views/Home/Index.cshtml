@@ -4,12 +4,6 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
-
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-
 <div class="container">
     <div class="row">
         <div class="col-md-6">
@@ -65,7 +59,7 @@
             <div class="collapse" id="collapseExample4">
                 <div class="well">
                     @{
-                        Html.RenderAction("ViolazioniOver400Mny");
+                        Html.RenderAction("ViolazioniOver400money");
                     }
                 </div>
             </div>

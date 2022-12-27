@@ -1,0 +1,23 @@
+﻿body {
+    background-color: ghostwhite;
+    padding: 0 !important;
+}
+
+.navbar {
+    background-color: dodgerblue !important; 
+    border-color: white;
+    color:white;
+    text-align: center;
+    margin-top: 0 !important;
+}
+
+.navbar ul {
+    list-style: none;
+    display: flex;
+    gap: 10px;
+    justify-content: space-around;
+}
+
+.navbar ul li a {
+    color: white !important;
+}
